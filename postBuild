@@ -15,8 +15,24 @@ deno eval 'import pl from "nodejs-polars"; console.log("nodejs-polars OK", pl.re
 
 # 4. Deno par défaut ; masquer le noyau Python pour ne pas perturber les élèves.
 #    (Supprimer la ligne allowed_kernelspecs pour réafficher Python.)
+#    Chaque noyau Deno occupe ~270 Mo et Binder limite une session à 2 Go :
+#    les noyaux dont le notebook n'est plus ouvert sont arrêtés après 10 min
+#    d'inactivité.
 mkdir -p "${HOME}/.jupyter"
 cat > "${HOME}/.jupyter/jupyter_server_config.py" <<'EOF'
 c.MappingKernelManager.default_kernel_name = "deno"
 c.KernelSpecManager.allowed_kernelspecs = {"deno"}
+c.MappingKernelManager.cull_idle_timeout = 600
+c.MappingKernelManager.cull_interval = 60
+EOF
+
+# 5. Fermer un notebook arrête aussi son noyau, pour libérer la mémoire.
+settings_dir="${NB_PYTHON_PREFIX:-$(python3 -c 'import sys; print(sys.prefix)')}/share/jupyter/lab/settings"
+mkdir -p "${settings_dir}"
+cat > "${settings_dir}/overrides.json" <<'EOF'
+{
+  "@jupyterlab/notebook-extension:tracker": {
+    "kernelShutdown": true
+  }
+}
 EOF

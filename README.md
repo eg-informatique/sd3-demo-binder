@@ -23,12 +23,16 @@ Environnement Jupyter prêt à l'emploi, avec **Deno** comme moteur (JavaScript 
 > ⚠️ Une session Binder est **temporaire** : elle s'arrête après ~10 minutes d'inactivité et les fichiers modifiés sont perdus.
 > Télécharge régulièrement ton notebook (clic droit sur le fichier → *Download*).
 
+> 💾 Chaque notebook ouvert utilise environ 270 Mo de mémoire, et une session est limitée à 2 Go (indicateur *Mem* en bas de l'écran).
+> **Ferme les notebooks dont tu n'as plus besoin** : leur noyau s'arrête et la mémoire est libérée.
+> Si JupyterLab affiche « Server Connection Error », la mémoire était pleine : relance Binder avec le lien ci-dessus.
+
 ## Contenu
 
 | Fichier | Rôle |
 |---|---|
 | `environment.yml` | Installe JupyterLab et Deno (depuis conda-forge). |
-| `postBuild` | Enregistre le noyau Deno, pré-télécharge les paquets npm, fait de Deno le noyau par défaut. |
+| `postBuild` | Enregistre le noyau Deno, pré-télécharge les paquets npm, fait de Deno le noyau par défaut, et libère la mémoire des notebooks fermés (arrêt du noyau à la fermeture, arrêt des noyaux inactifs). |
 | `deno.json` | Paquets npm disponibles dans les notebooks. |
 | `notebooks/` | Notebooks (noyau **Deno**). |
 | `data/` | Jeux de données CSV. |
