@@ -6,7 +6,8 @@ Environnement Jupyter prêt à l'emploi, avec **Deno** comme moteur (JavaScript 
 
 ## Pour les élèves
 
-1. Clique sur le bouton **launch binder** ci-dessus.
+1. Clique sur le bouton **launch binder** ci-dessus, ou ouvre ce lien :
+   <https://mybinder.org/v2/gh/eg-informatique/sd3-demo-binder/HEAD?urlpath=lab/tree/notebooks/00_demarrage.ipynb>
 2. Patiente (quelques secondes, ou quelques minutes si l'environnement doit être reconstruit).
 3. Ouvre `notebooks/00_demarrage.ipynb` et exécute les cellules avec **Shift + Entrée**.
 4. Continue avec les tutoriels, dans l'ordre :
