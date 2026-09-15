@@ -9,6 +9,15 @@ Environnement Jupyter prêt à l'emploi, avec **Deno** comme moteur (JavaScript 
 1. Clique sur le bouton **launch binder** ci-dessus.
 2. Patiente (quelques secondes, ou quelques minutes si l'environnement doit être reconstruit).
 3. Ouvre `notebooks/00_demarrage.ipynb` et exécute les cellules avec **Shift + Entrée**.
+4. Continue avec les tutoriels, dans l'ordre :
+
+| Notebook | Contenu |
+|---|---|
+| `01_affichage_et_fichiers.ipynb` | Afficher du texte, du markdown, du HTML ; télécharger et lire des fichiers CSV. |
+| `02_dataframes_polars.ipynb` | Manipuler des tableaux de données avec Polars : lecture, filtrage, tri, agrégation. |
+| `03_graphiques_plotly.ipynb` | Graphiques interactifs avec Plotly.js : barres, secteurs, nuage de points, courbes, histogrammes. |
+| `04_statistiques_et_regression.ipynb` | Statistiques de base et régression linéaire. |
+| `05_carte.ipynb` | Carte simple avec Observable Plot (bonus). |
 
 > ⚠️ Une session Binder est **temporaire** : elle s'arrête après ~10 minutes d'inactivité et les fichiers modifiés sont perdus.
 > Télécharge régulièrement ton notebook (clic droit sur le fichier → *Download*).
@@ -53,6 +62,7 @@ La **première** construction de l'image prend plusieurs minutes. Lancer le lien
 ### Ajouter des notebooks ou des paquets
 
 - Ajouter des `.ipynb` dans `notebooks/` avec le noyau **Deno** ; les données sont accessibles via `../data/...`.
+- Les tutoriels `01` à `05` sont des copies de `tutorials/deno/` du dépôt [sd3-sciences-sociales](https://github.com/eg-informatique/sd3-sciences-sociales), générés par `scripts/generate-deno-tutorials.ts`. Après une modification là-bas, les recopier ici en remplaçant `../../data/csv/` par `../data/`.
 - Ajouter un paquet npm dans `deno.json` : il sera pré-téléchargé à la prochaine construction.
 - Pour changer de version de Deno, modifier `environment.yml` (versions disponibles : <https://anaconda.org/conda-forge/deno>).
 
