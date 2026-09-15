@@ -1,0 +1,6 @@
+name: sd3-deno
+channels:
+  - conda-forge
+dependencies:
+  - jupyterlab>=4
+  - deno=2.9.5

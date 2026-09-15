@@ -1,0 +1,22 @@
+#!/bin/bash
+# Exécuté une seule fois par Binder (repo2docker), à la construction de l'image,
+# depuis la racine du dépôt.
+set -euo pipefail
+
+# 1. Enregistrer Deno comme noyau Jupyter.
+deno jupyter --install --force
+
+# 2. Télécharger à l'avance les paquets npm de deno.json (dans ./node_modules
+#    et ~/.cache/deno), pour que les élèves n'attendent pas au premier import.
+deno install
+
+# 3. Vérifier que Polars (module natif) se charge bien.
+deno eval 'import pl from "nodejs-polars"; console.log("nodejs-polars OK", pl.readCSV("data/titanic.csv").shape);'
+
+# 4. Deno par défaut ; masquer le noyau Python pour ne pas perturber les élèves.
+#    (Supprimer la ligne allowed_kernelspecs pour réafficher Python.)
+mkdir -p "${HOME}/.jupyter"
+cat > "${HOME}/.jupyter/jupyter_server_config.py" <<'EOF'
+c.MappingKernelManager.default_kernel_name = "deno"
+c.KernelSpecManager.allowed_kernelspecs = {"deno"}
+EOF

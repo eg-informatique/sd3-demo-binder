@@ -1,0 +1,11 @@
+{
+  "nodeModulesDir": "auto",
+  "imports": {
+    "nodejs-polars": "npm:nodejs-polars",
+    "simple-statistics": "npm:simple-statistics",
+    "ml-regression": "npm:ml-regression",
+    "@observablehq/plot": "npm:@observablehq/plot",
+    "topojson-client": "npm:topojson-client",
+    "linkedom": "npm:linkedom"
+  }
+}
