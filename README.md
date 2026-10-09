@@ -22,21 +22,15 @@ Environnement Jupyter prêt à l'emploi, avec **Deno** comme moteur (JavaScript 
 
 ### Créer son propre notebook (à l'école ou à la maison)
 
-`notebooks/nouveau_notebook.ipynb` est un notebook vierge (noyau Deno, Polars déjà importé). Ouvre-le directement :
-<https://mybinder.org/v2/gh/eg-informatique/sd3-demo-binder/HEAD?urlpath=lab/tree/notebooks/nouveau_notebook.ipynb>
+`nouveau_notebook.ipynb`, à la racine du dépôt, est un notebook vierge (noyau Deno, Polars déjà importé). Ouvre-le directement :
+<https://mybinder.org/v2/gh/eg-informatique/sd3-demo-binder/HEAD?urlpath=lab/tree/nouveau_notebook.ipynb>
 
 1. **Renomme-le** (clic droit sur le fichier → *Rename*).
-2. Dépose ton fichier CSV dans le même dossier (bouton *Upload*, flèche vers le haut, ou glisser-déposer) et lis-le avec `pl.readCSV("mon_fichier.csv")`.
-3. **Télécharge ton notebook régulièrement** (clic droit → *Download*). La fois suivante, relance Binder et redépose-le avec *Upload*.
+2. Dépose tes fichiers CSV dans le dossier **`datasets/`** (ouvre le dossier, puis bouton *Upload*, flèche vers le haut) et lis-les avec `pl.readCSV("datasets/mon_fichier.csv")`.
+3. Les images produites (graphiques, cartes) vont dans le dossier **`artefacts/`**.
+4. **Télécharge ton notebook régulièrement** (clic droit → *Download*), ainsi que tes images. La fois suivante, relance Binder et redépose-le avec *Upload*.
 
-Autre possibilité : menu *File → New → Notebook* ; le noyau Deno est choisi par défaut.
-
-> ⚠️ Une session Binder est **temporaire** : elle s'arrête après ~10 minutes d'inactivité et les fichiers modifiés sont perdus.
-> Télécharge régulièrement ton notebook (clic droit sur le fichier → *Download*).
-
-> 💾 Chaque notebook ouvert utilise environ 270 Mo de mémoire, et une session est limitée à 2 Go (indicateur *Mem* en bas de l'écran).
-> **Ferme les notebooks dont tu n'as plus besoin** : leur noyau s'arrête et la mémoire est libérée.
-> Si JupyterLab affiche « Server Connection Error », la mémoire était pleine : relance Binder avec le lien ci-dessus.
+Même organisation que le dossier `~/SD3` des ordinateurs de la salle 115 : le même notebook fonctionne aux deux endroits.
 
 ## Contenu
 
@@ -45,7 +39,9 @@ Autre possibilité : menu *File → New → Notebook* ; le noyau Deno est choisi
 | `environment.yml` | Installe JupyterLab et Deno (depuis conda-forge). |
 | `postBuild` | Enregistre le noyau Deno, pré-télécharge les paquets npm, fait de Deno le noyau par défaut, et libère la mémoire des notebooks fermés (arrêt du noyau à la fermeture, arrêt des noyaux inactifs). |
 | `deno.json` | Paquets npm disponibles dans les notebooks. |
-| `notebooks/` | Notebooks (noyau **Deno**), dont `nouveau_notebook.ipynb`, notebook vierge pour démarrer un projet. |
+| `notebooks/` | Tutoriels (noyau **Deno**). |
+| `nouveau_notebook.ipynb` | Notebook vierge pour démarrer un projet. |
+| `datasets/`, `artefacts/` | Fichiers CSV du projet ; images produites par les notebooks. |
 | `data/` | Jeux de données CSV. |
 
 Bibliothèques pré-installées : `nodejs-polars`, `simple-statistics`, `ml-regression`, `@observablehq/plot`, `topojson-client`, `linkedom` (document virtuel pour Observable Plot). Plotly.js est chargé depuis son CDN par le navigateur.
